@@ -18,7 +18,7 @@ Debian 12 (stable) + Wayland 1.20 + Gnome
 - mako
 - grim
 - cava
-- yay
+- yad
 - pipewire
 - xdg-desktop-portal-wlr
 
