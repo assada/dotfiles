@@ -1,8 +1,8 @@
 ## UT3USW Sway Configuration based on Hypr
 
 exec_always {
-    gsettings set org.gnome.desktop.interface text-scaling-factor 1.33
-    gsettings set org.gnome.desktop.interface cursor-size 32
+    gsettings set org.gnome.desktop.interface text-scaling-factor 1.1
+    gsettings set org.gnome.desktop.interface cursor-size 24
 }
 
 set $foot ~/.config/hypr/scripts/terminal
