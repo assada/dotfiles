@@ -1,0 +1,380 @@
+# Set inner/outer gaps
+gaps inner 5
+
+input * {
+    xkb_layout "us,ua"
+    xkb_options "grp:caps_toggle"
+}
+
+set $mod Mod4
+
+set $foot ~/.config/hypr/scripts/terminal
+
+
+set $screenshot ~/.config/hypr/scripts/rofi_screenshot
+
+exec_always {
+    gsettings set org.gnome.desktop.interface text-scaling-factor 1.33
+    gsettings set org.gnome.desktop.interface cursor-size 32
+}
+
+
+output * bg ~/.config/backgrounds/eva.jpeg fill
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $rosewater #f4dbd6
+set $flamingo  #f0c6c6
+set $pink      #f5bde6
+set $mauve     #c6a0f6
+set $red       #ed8796
+set $maroon    #ee99a0
+set $peach     #f5a97f
+set $green     #a6da95
+set $teal      #8bd5ca
+set $sky       #91d7e3
+set $sapphire  #7dc4e4
+set $blue      #8aadf4
+set $lavender  #b7bdf8
+set $text      #cad3f5
+set $subtext1  #b8c0e0
+set $subtext0  #a5adcb
+set $overlay2  #939ab7
+set $overlay1  #8087a2
+set $overlay0  #6e738d
+set $surface2  #5b6078
+set $surface1  #494d64
+set $surface0  #363a4f
+set $base      #24273a
+set $mantle    #1e2030
+set $crust     #181926
+
+# Hide titlebar on windows: 
+default_border pixel 2
+
+# Default Font
+# font pango:Noto Sans Regular 10
+font FiraSans Nerd Font 13
+
+# Thin borders:
+smart_borders off
+
+# Title format for windows
+for_window [shell="xdg_shell"] title_format "%title (%app_id)"
+for_window [shell="x_wayland"] title_format "%class - %title"
+
+# Set gaps for windows with rounded corners
+for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border radius 30
+
+for_window [app_id="^.*"] border pixel 2
+for_window [app_id="^.*"] border radius 30
+
+set $opacity 1
+
+for_window [class=".*"] opacity $opacity
+for_window [app_id=".*"] opacity $opacity
+
+
+## Window decoration
+# class                 border  backgr. text    indicator child_border
+# client.focused           $mauve    $base $text  $lavender $mauve
+# client.focused_inactive  $mauve       $base $text  $mauve $mauve
+# client.unfocused         $mauve        $base $text  $mauve $mauve
+# client.urgent            $peach        $base $peach $overlay0  $peach
+# client.placeholder       $base     $base $text  $overlay0  $overlay0
+# client.background        $base
+
+# client.focused           $base     $base $text  $mauve $base
+# client.focused_inactive  $base       $base $text  $base $base
+# client.unfocused         $base        $base $text  $base $base
+# client.urgent            $peach        $base $peach $overlay0  $peach
+# client.placeholder       $base     $base $text  $overlay0  $base
+# client.background        $base
+
+client.focused           $mauve    $base $text  $lavender $mauve
+client.focused_inactive  $mantle       $base $text  $mantle $mantle
+client.unfocused         $mantle        $base $text  $mantle $mantle
+client.urgent            $peach        $base $peach $overlay0  $peach
+client.placeholder       $base     $base $text  $overlay0  $overlay0
+client.background        $base
+
+set $menu rofi -dmenu
+
+set $launcher ~/.config/hypr/scripts/rofi_launcher
+
+set $powermenu nwgbar -f
+
+bindsym $mod+Return exec $foot
+
+bindsym print exec grimshot --notify copy area
+
+#bindsym $mod+Shift+w exec ~/.config/waybar/scripts/swap.sh
+
+bindsym $mod+Shift+x workspace number 10; exec xournalpp
+
+# Activities and workspaces
+bindsym $mod+Shift+p exec swayr switch-workspace-or-window
+
+# Switch to the last recently used window
+bindsym $mod+Tab exec swayr switch-to-urgent-or-lru-window
+
+#bindsym Mod3 exec swaymsg input "1:1:AT_Translated_Set_2_keyboard" xkb_switch_layout next
+
+# Open the power menu
+#    bindsym $mod+Shift+e exec $powermenu
+    bindsym $mod+x exec $powermenu # ArchCraft shortcut
+
+    # Kill focused window
+    bindsym $mod+q kill
+
+    # Start your launcher
+    # bindsym $mod+d exec $menu
+    bindsym $mod+d exec $launcher
+    # Launcher
+    #bindsym $mod+Shift+d exec $launcher
+
+
+
+floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+#    bindgesture swipe:right workspace prev
+#    bindgesture swipe:left workspace next
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # Ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+    # Switch to workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10
+
+bindsym $mod+n exec $foot  nvim ~/Documents/notes/ut3usw/$(date -I).md
+
+bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    # bindsym $mod+space focus mode_toggle
+
+    # Move focus to the parent container
+    # bindsym $mod+a focus parent
+
+
+
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Resize floating windows with mouse scroll:
+bindsym --whole-window --border $mod+button4 resize shrink height 5 px or 5 ppt
+bindsym --whole-window --border $mod+button5 resize grow height 5 px or 5 ppt
+bindsym --whole-window --border $mod+shift+button4 resize shrink width 5 px or 5 ppt
+bindsym --whole-window --border $mod+shift+button5 resize grow width 5 px or 5 ppt
+
+#
+# Volume
+#
+bindsym XF86AudioRaiseVolume exec pamixer -ui 2 && pamixer --get-volume > $SWAYSOCK.wob
+bindsym XF86AudioLowerVolume exec pamixer -ud 2 && pamixer --get-volume > $SWAYSOCK.wob
+bindsym XF86AudioMute exec pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || pamixer --get-volume > $SWAYSOCK.wob
+
+#
+# Player
+#
+    bindsym XF86AudioPlay exec playerctl play
+    bindsym XF86AudioPause exec playerctl pause
+    bindsym XF86AudioNext exec playerctl next
+    bindsym XF86AudioPrev exec playerctl previous
+    bindsym $mod+m exec $music
+#
+# Backlight
+#
+    bindsym XF86MonBrightnessUp exec light -A 5 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob 
+    bindsym XF86MonBrightnessDown exec light -U 5 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob
+#
+# App shortcuts
+#
+    # bindsym $mod+n exec thunars
+    #bindsym $mod+n exec thunar
+    bindsym $mod+o workspace number 2; exec google-chrome --password-store=gnome-libsecret
+    bindsym $mod+Shift+o code
+
+
+#bindsym Alt+print exec /usr/share/sway/scripts/grimshot --notify copy area
+
+
+# set floating (nontiling)for apps needing it:
+for_window [class="Yad" instance="yad"] floating enable
+for_window [app_id="yad"] floating enable
+for_window [app_id="blueman-manager"] floating enable,  resize set width 40 ppt height 30 ppt
+
+# set floating (nontiling) for special apps:
+for_window [class="Xsane" instance="xsane"] floating enable
+for_window [app_id="pavucontrol" ] floating enable, resize set width 40 ppt height 30 ppt
+for_window [class="qt5ct" instance="qt5ct"] floating enable, resize set width 60 ppt height 50 ppt
+for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
+for_window [app_id="pamac-manager"] floating enable, resize set width 80 ppt height 70 ppt
+for_window [class="Lxappearance"] floating enable, resize set width 60 ppt height 50 ppt
+
+# set floating for window roles
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [window_role="About"] floating enable
+for_window [title="File Operation Progress"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
+for_window [app_id="firedragon" title="Library"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
+for_window [app_id="floating_shell_portrait"] floating enable, border pixel 1, sticky enable, resize set width 30 ppt height 40 ppt
+for_window [title="Picture in picture"] floating enable, sticky enable
+for_window [title="nmtui"] floating enable,  resize set width 50 ppt height 70 ppt
+for_window [title="htop"] floating enable, resize set width 50 ppt height 70 ppt
+for_window [app_id="xsensors"] floating enable
+for_window [title="Save File"] floating enable
+for_window [app_id="firedragon" title="firedragon — Sharing Indicator"] kill
+
+# Inhibit idle
+for_window [app_id="firedragon"] inhibit_idle fullscreen
+for_window [app_id="Google Chrome"] inhibit_idle fullscreen
+
+
+# 
+# Zoom Meeting App
+# 
+# Default for all windows is non-floating.
+# 
+# For pop up notification windows that don't use notifications api
+for_window [app_id="zoom" title="^zoom$"] border none, floating enable
+# For specific Zoom windows
+for_window [app_id="zoom" title="^(Zoom|About)$"] border pixel, floating enable
+for_window [app_id="zoom" title="Settings"] floating enable, floating_minimum_size 960 x 700
+# Open Zoom Meeting windows on a new workspace (a bit hacky)
+#for_window [app_id="zoom" title="Zoom Meeting(.*)?"] workspace next_on_output --create, move container to workspace current, floating disable, inhibit_idle open
+
+for_window [class="(.*join\?action\=join.*|.*zoom.*)"] floating enable no_focus for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Licensed Account"] floating disable no_focus for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Free Account"] floating disable no_focus for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom Meeting"] floating disable no_focus no_focus [title="^zoom\s?$"] no_focus [title="^join\?action=join.*$"]
+
+
+seat seat0 fallback true
+seat seat0 hide_cursor when-typing enable
+seat seat0 idle_inhibit keyboard pointer switch
+seat seat0 idle_wake keyboard switch
+
+
+input type:touchpad {
+      dwt enabled
+      tap enabled
+      natural_scroll enabled
+      pointer_accel 0.35
+}
+
+exec mako
+
+exec systemctl --user import-environment
+#exec systemctl --user import-environment PATH  DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
+
+exec_always dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
+
+exec_always systemctl --user start xdg-desktop-portal-wlr.service
+
+exec --no-startup-id ~/.config/sway/scripts/start_keyring
+
+#exec_always gnome-keyring-daemon --daemonize --start --components=gpg,pkcs11,secrets,ssh
+
+exec_always pipewire
+
+# Wob
+exec mkfifo $SWAYSOCK.wob
+# THIS DOESN'T WORK. --border-color etc. not valid
+# exec tail -f $SWAYSOCK.wob | wob --border-color '#ffdcbb8c' --background-color '#cc3a3a3a' --bar-color '#ffdcbb8c'
+exec tail -f $SWAYSOCK.wob | wob
+
+exec nm-applet --indicator
+
+exec /usr/libexec/xdg-desktop-portal
+
+exec_always swayrd
+
+exec_always ~/.config/sway/scripts/statusbar
+
+
