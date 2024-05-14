@@ -9,7 +9,7 @@ set $foot ~/.config/hypr/scripts/terminal
 set $screenshot grimshot --notify copy area
 set $menu rofi -dmenu
 set $launcher ~/.config/hypr/scripts/rofi_launcher
-set $powermenu nwgbar -f
+set $powermenu nwgbar -layer-shell-layer OVERLAY -layer-shell-exclusive-zone -1 -b 24273a -o 0.8
 
 seat seat0 fallback true
 seat seat0 hide_cursor when-typing enable

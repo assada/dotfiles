@@ -18,6 +18,7 @@
     "pulseaudio",
     "custom/keyboard-layout",
     "temperature",
+    //"cpu",
     "memory",
     "battery",
     "network",
@@ -144,8 +145,8 @@
       "on-scroll-up": "shift_up",
       "on-scroll-down": "shift_down"
     },
-    "format": "  {:%a %d %b  %I:%M %p}", //12 hour format
-    // "format": " {:%d %m %Y  %H:%M}",	//24 hour format
+    //"format": "  {:%a %d %b  %I:%M %p}", //12 hour format
+    "format": " {:%d %m %Y  %H:%M}",	//24 hour format
     "format-alt": "  {:%d/%m/%Y  %H:%M:%S}",
     // //"timezones": [ "Kolkata" ],
     // //"max-length": 200
@@ -179,7 +180,9 @@
   //     "interval": 1
   // },
   "cpu": {
-    "format": "﬙ {usage: >1}%",
+    "interval": 10,
+    "format": " {}%",
+    "max-length": 4,
     "on-click": "foot -e btop"
   },
   "memory": {
@@ -252,7 +255,7 @@
   },
   "custom/power": {
     "format": "󰐥",
-    "on-click": "nwgbar",
+    "on-click": "nwgbar -layer-shell-layer OVERLAY -layer-shell-exclusive-zone -1 -b 24273a -o 0.8",
     "tooltip": false
   },
   "custom/keyboard-layout": {
@@ -267,7 +270,7 @@
   },
   "custom/launcher": {
     "format": " ",
-    "on-click": "exec nwg-drawer -c 7 -is 70 -spacing 23",
+    "on-click": "exec nwg-drawer -c 7 -is 70 -spacing 23 -ovl",
     "tooltip": false
   }
 }
