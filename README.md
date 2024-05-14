@@ -3,9 +3,11 @@
 ![image](https://github.com/assada/dotfiles/assets/1472664/8eaf33b2-9a51-440e-9a2f-82c18d03f197)
 
 
+Debian 12 (stable) + Wayland 1.20 + Gnome
+
 ## Requirements:
 
-- sway
+- sway `>= 1.7` from deb repository
 - foot
 - rofi
 - wofi
@@ -15,6 +17,8 @@
 - nwgbar
 - mako
 - grim
+- cava
+- yay
 - pipewire
 - xdg-desktop-portal-wlr
 
@@ -22,6 +26,9 @@
 
 - wlroots
 - swayfx
+- nvim (Astro)
+- btop
+- mc
 
 
 ## Screenshots
