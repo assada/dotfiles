@@ -1,0 +1,26 @@
+# all ignore #
+/*
+/.**
+
+!/sway/ 
+!/swayr/
+!/wob/
+!/wofi/
+!/fish/
+!/omf/
+!/nwg-launchers/ 
+!/nvim/ 
+!/nnn/
+!/mc/
+!/mako/
+!/hypr/
+!/btop/
+!/cava/
+!/backgrounds/
+
+# global #
+__pycache__
+!/README.md
+!/LICENSE
+!.gitignore
+!.gitkeep
