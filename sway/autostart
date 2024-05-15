@@ -27,4 +27,5 @@ exec_always swayrd
 
 exec_always ~/.config/sway/scripts/statusbar
 
-
+# Keyboard backlight on
+exec_always light -As "sysfs/leds/tpacpi::kbd_backlight" 100

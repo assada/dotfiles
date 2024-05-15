@@ -152,6 +152,11 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessUp exec light -A 5 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob 
 bindsym XF86MonBrightnessDown exec light -U 5 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob
 
+# Bindings for keyboard backlight
+bindsym XF86KbdBrightnessUp exec light -As "sysfs/leds/tpacpi::kbd_backlight" 10
+bindsym XF86KbdBrightnessDown exec light -Us "sysfs/leds/tpacpi::kbd_backlight" 10
+
+bindsym XF86Tools exec code
 
 #
 # App shortcuts
