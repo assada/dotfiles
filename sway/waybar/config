@@ -8,7 +8,6 @@
   "modules-left": [
     "custom/launcher",
     "sway/workspaces",
-//   "custom/swap",
     "tray",
     "sway/mode",
   ],
@@ -45,65 +44,6 @@
       "9": "",
       "10": ""
     }
-  },
-  "mpd": {
-    "tooltip": true,
-    "tooltip-format": "{artist} - {album} - {title} - Total Time : {totalTime:%M:%S}",
-    "format": " {elapsedTime:%M:%S}",
-    "format-disconnected": "⚠  Disconnected",
-    "format-stopped": " Not Playing",
-    "on-click": "mpc toggle",
-    "state-icons": {
-      "playing": "",
-      "paused": ""
-    }
-  },
-  "mpd#2": {
-    "format": "",
-    "format-disconnected": "",
-    "format-paused": "",
-    "format-stopped": "",
-    // Commands to execute on events
-    "on-click": "mpc -q pause && mpc -q prev && mpc -q start"
-  },
-  "mpd#3": {
-    "interval": 1,
-    "format": "{stateIcon}",
-    "format-disconnected": "",
-    "format-paused": "{stateIcon}",
-    "format-stopped": "",
-    "state-icons": {
-      "paused": "",
-      "playing": ""
-    },
-    // Commands to execute on events
-    "on-click": "mpc toggle"
-  },
-  "mpd#4": {
-    "format": "",
-    "format-disconnected": "",
-    "format-paused": "",
-    "format-stopped": "",
-    // Commands to execute on events
-    "on-click": "mpc -q pause && mpc -q next && mpc -q start"
-  },
-  "custom/swap": {
-    "on-click": "~/.config/sway/waybar/scripts/swap.sh",
-    "tooltip": "Swap between waybar configs",
-    "format": "Bg  "
-  },
-  "custom/mpd": {
-    "format": " {title} - {artist}",
-    "interval": 5,
-    "exec": "mpc current --format='\"title\":\"%title%\",\"artist\":\"%artist%\"'"
-  },
-  "custom/cava-internal": {
-    "exec": "sh ~/.config/sway/waybar/scripts/Cava.sh",
-    "format": "{}",
-    "tooltip": false,
-    //"on-click": "swaymsg reload & pkill waybar & waybar",
-    "layer": "below",
-    "output": "all"
   },
   "sway/mode": {
     "format": "<span style=\"italic\">{}</span>"
@@ -152,33 +92,6 @@
     // //"max-length": 200
     "interval": 1
   },
-  // "clock": {
-  //     "format": "  {:%H:%M:%S}",
-  //     "format-alt": "  {:%A, %B %d, %Y (%R)}",
-  //     "tooltip-format": "<tt><small>{calendar}</small></tt>",
-  //     "calendar": {
-  //         "mode"          : "month",
-  //         "mode-mon-col"  : 3,
-  //         "weeks-pos"     : "right",
-  //         "on-scroll"     : 1,
-  //         "on-click-right": "mode",
-  //         "format": {
-  //             "months":     "<span color='#ffead3'><b>{}</b></span>",
-  //             "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-  //             "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-  //             "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-  //             "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-  //         }
-  //     },
-  //     "actions": {
-  //         "on-click-right": "mode",
-  //         "on-click-forward": "tz_up",
-  //         "on-click-backward": "tz_down",
-  //         "on-scroll-up": "shift_up",
-  //         "on-scroll-down": "shift_down"
-  //     },
-  //     "interval": 1
-  // },
   "cpu": {
     "interval": 10,
     "format": " {}%",
@@ -244,14 +157,6 @@
     "on-click": "pavucontrol",
     "on-scroll-up": "pamixer -ui 2 && pamixer --get-volume > $SWAYSOCK.wob",
     "on-scroll-down": "pamixer -ud 2 && pamixer --get-volume > $SWAYSOCK.wob"
-  },
-  "custom/pacman": {
-    "format": " {}",
-    "interval": 7200, // every two hours
-    "exec": "i=$(checkupdates); echo \"$i\" |wc -l; echo \"$i\" |column -t |tr '\n' '\r'", // # of updates and tooltip details
-    "exec-if": "exit 0", // always run; consider advanced run conditions
-    "on-click": "alacritty -e sudo pacman -Syu", // update system
-    "signal": 8
   },
   "custom/power": {
     "format": "󰐥",
