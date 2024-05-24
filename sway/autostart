@@ -29,3 +29,6 @@ exec_always ~/.config/sway/scripts/statusbar
 
 # Keyboard backlight on
 exec_always light -As "sysfs/leds/tpacpi::kbd_backlight" 100
+
+# Swaylock
+exec swayidle timeout 300 'swaylock' before-sleep 'swaylock' after-resume 'light -As "sysfs/leds/tpacpi::kbd_backlight" 100'
